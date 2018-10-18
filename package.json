@@ -22,7 +22,8 @@
   "main": "parser.js",
   "files": [
     "parser.js",
-    "codemod-fix-backslash-escapes.js"
+    "codemod-fix-backslash-escapes.js",
+    "index.d.ts"
   ],
   "devDependencies": {
     "expect.js": "^0.3.1",
