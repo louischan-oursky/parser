@@ -154,6 +154,12 @@ describe("Selects", function() {
   });
 
 });
+describe("React", function() {
+  it("should accept a react statement based on a variable", function() {
+    expect(function(){ parse('{a, react}'); }).to.not.throwError();
+    expect(function(){ parse('{a, react, href {hello} }'); }).to.not.throwError();
+  });
+});
 describe("Plurals", function() {
 
   it("should accept a variable, no offset, and plural keys", function() {

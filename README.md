@@ -115,7 +115,7 @@ For more example usage, please take a look at our [test suite](./test.js).
 The output of `parse()` is a `Token` array:
 
 ```typescript
-type Token = string | Argument | Plural | Select | Function
+type Token = string | Argument | Plural | React | Select | Function
 
 type Argument = {
   type: 'argument',
@@ -127,6 +127,12 @@ type Plural = {
   arg: Identifier,
   offset: number,
   cases: PluralCase[]
+}
+
+type React = {
+  type: 'react',
+  arg: Identifier,
+  cases: SelectCase[]
 }
 
 type Select = {

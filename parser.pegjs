@@ -5,9 +5,25 @@
 start = token*
 
 token
-  = argument / select / plural / function
+  = argument / react / select / plural / function
   / '#' & { return inPlural; } { return { type: 'octothorpe' }; }
   / str:char+ { return str.join(''); }
+
+react
+  = '{' _ arg:id _ ',' _ (m:'react' { if (options.strict) { isPlural = false; } return m; }) _ '}' {
+    return {
+      type: 'react',
+      arg: arg,
+      props: []
+    };
+  }
+  / '{' _ arg:id _ ',' _ (m:'react' { if (options.strict) { isPlural = false; } return m; }) _ ',' _ props:propCase+ _ '}' {
+    return {
+      type: 'react',
+      arg: arg,
+      props: props
+    };
+  }
 
 argument = '{' _ arg:id _ '}' {
     return {
@@ -53,6 +69,8 @@ function = '{' _ arg:id _ ',' _ key:functionKey _ param:functionParam? '}' {
 
 // not Pattern_Syntax or Pattern_White_Space
 id = $([^\u0009-\u000d \u0085\u200e\u200f\u2028\u2029\u0021-\u002f\u003a-\u0040\u005b-\u005e\u0060\u007b-\u007e\u00a1-\u00a7\u00a9\u00ab\u00ac\u00ae\u00b0\u00b1\u00b6\u00bb\u00bf\u00d7\u00f7\u2010-\u2027\u2030-\u203e\u2041-\u2053\u2055-\u205e\u2190-\u245f\u2500-\u2775\u2794-\u2bff\u2e00-\u2e7f\u3001-\u3003\u3008-\u3020\u3030\ufd3e\ufd3f\ufe45\ufe46]+)
+
+propCase = _ key:id _ tokens:caseTokens { return { key: key, tokens: tokens }; }
 
 selectCase = _ key:id _ tokens:caseTokens { return { key: key, tokens: tokens }; }
 
