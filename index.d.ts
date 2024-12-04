@@ -58,7 +58,7 @@ export type Identifier = string;
 export type FunctionKey =
   | "number"
   | "date"
-  | "date"
+  | "time"
   | "spellout"
   | "ordinal"
   | "duration";
