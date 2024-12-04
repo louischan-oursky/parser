@@ -1,6 +1,6 @@
 {
   "name": "@louischan-oursky/messageformat-parser",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A PEG.js parser for ICU MessageFormat strings",
   "keywords": [
     "icu",
