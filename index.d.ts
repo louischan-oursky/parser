@@ -36,7 +36,8 @@ export interface Select {
 export interface Func {
   type: "function";
   arg: Identifier;
-  key: Identifier;
+  key: FunctionKey;
+  param?: FunctionParam | null;
 }
 export interface PluralCase {
   key: string; // "zero" | "one" | "two" | "few" | "many" | "other" | "0" | "1" | ...
@@ -50,9 +51,19 @@ export interface Octothorpe {
   type: "octothorpe";
 }
 export type Identifier = string;
+export type FunctionKey =
+  | "number"
+  | "date"
+  | "date"
+  | "spellout"
+  | "ordinal"
+  | "duration";
+export interface FunctionParam {
+  tokens: Token[];
+}
 export function parse(
   src: string,
   options?: {
     strict?: boolean;
-  }
+  },
 ): Token[];
