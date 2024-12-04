@@ -26,7 +26,7 @@ export interface Plural {
 export interface React {
   type: "react";
   arg: Identifier;
-  cases: SelectCase[];
+  props: PropCase[];
 }
 export interface Select {
   type: "select";
@@ -44,6 +44,10 @@ export interface PluralCase {
   tokens: TokenOrOctothorpe[];
 }
 export interface SelectCase {
+  key: Identifier;
+  tokens: Token[];
+}
+export interface PropCase {
   key: Identifier;
   tokens: Token[];
 }
