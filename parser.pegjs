@@ -10,14 +10,14 @@ token
   / str:char+ { return str.join(''); }
 
 react
-  = '{' _ arg:id _ ',' _ (m:'react' { if (options.strict) { isPlural = false; } return m; }) _ '}' {
+  = '{' _ arg:id _ ',' _ (m:'react' { if (options.strict) { inPlural = false; } return m; }) _ '}' {
     return {
       type: 'react',
       arg: arg,
       props: []
     };
   }
-  / '{' _ arg:id _ ',' _ (m:'react' { if (options.strict) { isPlural = false; } return m; }) _ ',' _ props:propCase+ _ '}' {
+  / '{' _ arg:id _ ',' _ (m:'react' { if (options.strict) { inPlural = false; } return m; }) _ ',' _ props:propCase+ _ '}' {
     return {
       type: 'react',
       arg: arg,
